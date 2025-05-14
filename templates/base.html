@@ -5,6 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %}{% endblock %}</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .mobile-menu-overlay {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        opacity: 0;
+        visibility: hidden;
+      }
+      .mobile-menu-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+      .mobile-menu-side {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      .mobile-menu-side.active {
+        transform: translateX(0);
+        opacity: 1;
+      }
+      .menu-item {
+        opacity: 0;
+        transform: translateX(20px);
+        transition: all 0.3s ease;
+      }
+      .menu-item.active {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      .menu-item:nth-child(1) { transition-delay: 0.1s; }
+      .menu-item:nth-child(2) { transition-delay: 0.2s; }
+      .menu-item:nth-child(3) { transition-delay: 0.3s; }
+    </style>
   </head>
   <body class="bg-gray-900 text-gray-100">
     <!-- Navigation -->
@@ -26,16 +58,27 @@
             </button>
           </div>
         </div>
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden md:hidden">
-          <div class="px-2 pt-2 pb-3 space-y-1">
-            <a href="{% url 'ensaios' %}" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Ensaios</a>
-            <a href="{% url 'sobre' %}" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Sobre</a>
-            <a href="{% url 'contato' %}" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Contato</a>
-          </div>
-        </div>
       </div>
     </nav>
+
+    <!-- Mobile menu overlay -->
+    <div id="mobile-menu-overlay" class="mobile-menu-overlay fixed inset-0 bg-black bg-opacity-50 z-40"></div>
+
+    <!-- Mobile side menu -->
+    <div id="mobile-menu" class="mobile-menu-side fixed top-0 right-0 h-full w-64 bg-gray-800 shadow-lg z-50">
+      <div class="flex justify-end p-4">
+        <button id="close-menu-button" class="text-gray-300 hover:text-white focus:outline-none">
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+      <div class="px-4 py-2 space-y-1">
+        <a href="{% url 'ensaios' %}" class="menu-item block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Ensaios</a>
+        <a href="{% url 'sobre' %}" class="menu-item block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Sobre</a>
+        <a href="{% url 'contato' %}" class="menu-item block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Contato</a>
+      </div>
+    </div>
 
     <!-- Main Content -->
     <main class="pt-16">
@@ -115,11 +158,36 @@
     <!-- Mobile menu JavaScript -->
     <script>
       const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const closeMenuButton = document.getElementById('close-menu-button');
       const mobileMenu = document.getElementById('mobile-menu');
+      const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+      const menuItems = document.querySelectorAll('.menu-item');
 
-      mobileMenuButton.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-      });
+      function openMenu() {
+        mobileMenu.classList.add('active');
+        mobileMenuOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        
+        // Animate menu items
+        menuItems.forEach(item => {
+          item.classList.add('active');
+        });
+      }
+
+      function closeMenu() {
+        mobileMenu.classList.remove('active');
+        mobileMenuOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+        
+        // Reset menu items animation
+        menuItems.forEach(item => {
+          item.classList.remove('active');
+        });
+      }
+
+      mobileMenuButton.addEventListener('click', openMenu);
+      closeMenuButton.addEventListener('click', closeMenu);
+      mobileMenuOverlay.addEventListener('click', closeMenu);
     </script>
   </body>
 </html>
