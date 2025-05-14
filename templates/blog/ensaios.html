@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block title %}Ensaios{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-12">
+    <h1 class="text-4xl font-bold text-center mb-12 text-white">Nossos Ensaios</h1>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Ensaios Item 1 -->
+        <div class="group relative overflow-hidden rounded-lg shadow-lg">
+            <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3" 
+                 alt="Ensaio Individual" 
+                 class="w-full h-80 object-cover transition duration-300 group-hover:scale-110">
+            <div class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                <div class="text-white text-center p-4">
+                    <h3 class="text-xl font-bold mb-2">Ensaio Individual</h3>
+                    <p class="text-sm mb-4">Capturando sua essência em um ensaio personalizado</p>
+                    <a href="{% url 'contato' %}" class="bg-white text-gray-900 px-4 py-2 rounded-full text-sm hover:bg-gray-200 transition duration-300">
+                        Agendar
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ensaios Item 2 -->
+        <div class="group relative overflow-hidden rounded-lg shadow-lg">
+            <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-4.0.3" 
+                 alt="Ensaio Casal" 
+                 class="w-full h-80 object-cover transition duration-300 group-hover:scale-110">
+            <div class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                <div class="text-white text-center p-4">
+                    <h3 class="text-xl font-bold mb-2">Ensaio Casal</h3>
+                    <p class="text-sm mb-4">Registrando o amor e a conexão entre vocês</p>
+                    <a href="{% url 'contato' %}" class="bg-white text-gray-900 px-4 py-2 rounded-full text-sm hover:bg-gray-200 transition duration-300">
+                        Agendar
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ensaios Item 3 -->
+        <div class="group relative overflow-hidden rounded-lg shadow-lg">
+            <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?ixlib=rb-4.0.3" 
+                 alt="Ensaio Família" 
+                 class="w-full h-80 object-cover transition duration-300 group-hover:scale-110">
+            <div class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                <div class="text-white text-center p-4">
+                    <h3 class="text-xl font-bold mb-2">Ensaio Família</h3>
+                    <p class="text-sm mb-4">Momentos especiais com quem você ama</p>
+                    <a href="{% url 'contato' %}" class="bg-white text-gray-900 px-4 py-2 rounded-full text-sm hover:bg-gray-200 transition duration-300">
+                        Agendar
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ensaios Item 4 -->
+        <div class="group relative overflow-hidden rounded-lg shadow-lg">
+            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3" 
+                 alt="Ensaio Gestante" 
+                 class="w-full h-80 object-cover transition duration-300 group-hover:scale-110">
+            <div class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                <div class="text-white text-center p-4">
+                    <h3 class="text-xl font-bold mb-2">Ensaio Gestante</h3>
+                    <p class="text-sm mb-4">Eternizando esse momento único e especial</p>
+                    <a href="{% url 'contato' %}" class="bg-white text-gray-900 px-4 py-2 rounded-full text-sm hover:bg-gray-200 transition duration-300">
+                        Agendar
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ensaios Item 5 -->
+        <div class="group relative overflow-hidden rounded-lg shadow-lg">
+            <img src="https://images.unsplash.com/photo-1511988617509-a57c8a288659?ixlib=rb-4.0.3" 
+                 alt="Ensaio Newborn" 
+                 class="w-full h-80 object-cover transition duration-300 group-hover:scale-110">
+            <div class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                <div class="text-white text-center p-4">
+                    <h3 class="text-xl font-bold mb-2">Ensaio Newborn</h3>
+                    <p class="text-sm mb-4">Registrando os primeiros dias do seu bebê</p>
+                    <a href="{% url 'contato' %}" class="bg-white text-gray-900 px-4 py-2 rounded-full text-sm hover:bg-gray-200 transition duration-300">
+                        Agendar
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ensaios Item 6 -->
+        <div class="group relative overflow-hidden rounded-lg shadow-lg">
+            <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3" 
+                 alt="Ensaio Corporativo" 
+                 class="w-full h-80 object-cover transition duration-300 group-hover:scale-110">
+            <div class="absolute inset-0 bg-black bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                <div class="text-white text-center p-4">
+                    <h3 class="text-xl font-bold mb-2">Ensaio Corporativo</h3>
+                    <p class="text-sm mb-4">Fotos profissionais para sua carreira</p>
+                    <a href="{% url 'contato' %}" class="bg-white text-gray-900 px-4 py-2 rounded-full text-sm hover:bg-gray-200 transition duration-300">
+                        Agendar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
